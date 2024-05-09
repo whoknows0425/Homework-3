@@ -66,7 +66,8 @@ class EqualWeightPortfolio:
         """
         TODO: Complete Task 1 Below
         """
-
+        num_assets = len(assets)
+        self.portfolio_weights[assets] = 1 / num_assets
         """
         TODO: Complete Task 1 Above
         """
