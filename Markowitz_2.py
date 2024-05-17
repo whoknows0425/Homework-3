@@ -55,7 +55,7 @@ class MyPortfolio:
     NOTE: You can modify the initialization function
     """
 
-    def __init__(self, price, exclude, lookback=15, gamma=0.06):
+    def __init__(self, price, exclude, lookback=15, gamma=0.3):
         self.price = price
         self.returns = price.pct_change().fillna(0)
         self.exclude = exclude
@@ -74,8 +74,8 @@ class MyPortfolio:
         """
         TODO: Complete Task 4 Below
         """
-        for i in range(self.lookback + 1, len(self.price)):
-            R_n = self.returns.copy()[assets].iloc[i - self.lookback : i]
+        for i in range(1, len(self.price)-self.lookback-1):
+            R_n = self.returns.copy()[assets].iloc[i :i + self.lookback]
             self.portfolio_weights.loc[self.price.index[i], assets] = self.mv_opt(
             R_n, self.gamma
             )
